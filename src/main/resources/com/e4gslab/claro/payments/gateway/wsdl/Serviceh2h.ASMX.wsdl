@@ -1,0 +1,538 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:s="http://www.w3.org/2001/XMLSchema"
+                  xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/"
+                  xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+                  xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+                  xmlns:tns="http://tempuri.org/cpsh2h/serviceh2h"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+                  xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+                  targetNamespace="http://tempuri.org/cpsh2h/serviceh2h"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://microsoft.com/wsdl/mime/textMatching/ ">
+
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This XML Web service allows clients to log on to
+    Multimerchant Pay System. Ver. 06212013
+  </wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/cpsh2h/serviceh2h">
+      <s:element name="SendTransactions">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="passWord" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="customerID" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="customerName" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="customerEmail" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="telephone" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="fax" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="address1" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="address2" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="state" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="city" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="zipCode" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="descriptionBuy" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="operatorId" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="channel" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="tax1" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="tax2" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="tax3" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="tax4" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="MerchantTransId" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="amount" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="paymentType" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="SecurityCardCode" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="expirationDate" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="cardNumber" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="bankRoutingNumber" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="bankAccountNumber" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="authorizationBit" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="bankClientName" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="filler1" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="filler2" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="filler3" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="filler4" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="Note" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendTransactionsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SendTransactionsResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema"/>
+                  <s:any/>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RequestPINPAD">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="passWord" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="customerID" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="customerName" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="customerEmail" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="telephone" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="fax" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="address1" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="address2" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="state" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="city" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="zipCode" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="descriptionBuy" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="operatorId" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="channel" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="tax1" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="tax2" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="tax3" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="tax4" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="MerchantTransId" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="amount" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="expirationDate" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="cardNumber" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="filler1" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="filler2" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="filler3" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="filler4" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="Note" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RequestPINPADResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RequestPINPADResult" type="tns:PinPadResponse"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="PinPadResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ResultCode" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="PGResponse" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="PINPADhtml" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="PGTransactionId" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SubmitATH">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="passWord" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="Requestid" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SubmitATHResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SubmitATHResult" type="tns:ATHResponse"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ATHResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="StatusCode" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="AuthorizationNumber" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="ConfirmationNumber" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="DataSet" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:element ref="s:schema"/>
+            <s:any/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PinPadResponse" nillable="true" type="tns:PinPadResponse"/>
+      <s:element name="ATHResponse" nillable="true" type="tns:ATHResponse"/>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="SendTransactionsSoapIn">
+    <wsdl:part name="parameters" element="tns:SendTransactions"/>
+  </wsdl:message>
+  <wsdl:message name="SendTransactionsSoapOut">
+    <wsdl:part name="parameters" element="tns:SendTransactionsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="RequestPINPADSoapIn">
+    <wsdl:part name="parameters" element="tns:RequestPINPAD"/>
+  </wsdl:message>
+  <wsdl:message name="RequestPINPADSoapOut">
+    <wsdl:part name="parameters" element="tns:RequestPINPADResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SubmitATHSoapIn">
+    <wsdl:part name="parameters" element="tns:SubmitATH"/>
+  </wsdl:message>
+  <wsdl:message name="SubmitATHSoapOut">
+    <wsdl:part name="parameters" element="tns:SubmitATHResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SendTransactionsHttpGetIn">
+    <wsdl:part name="userName" type="s:string"/>
+    <wsdl:part name="passWord" type="s:string"/>
+    <wsdl:part name="customerID" type="s:string"/>
+    <wsdl:part name="customerName" type="s:string"/>
+    <wsdl:part name="customerEmail" type="s:string"/>
+    <wsdl:part name="telephone" type="s:string"/>
+    <wsdl:part name="fax" type="s:string"/>
+    <wsdl:part name="address1" type="s:string"/>
+    <wsdl:part name="address2" type="s:string"/>
+    <wsdl:part name="state" type="s:string"/>
+    <wsdl:part name="city" type="s:string"/>
+    <wsdl:part name="zipCode" type="s:string"/>
+    <wsdl:part name="descriptionBuy" type="s:string"/>
+    <wsdl:part name="operatorId" type="s:string"/>
+    <wsdl:part name="channel" type="s:string"/>
+    <wsdl:part name="tax1" type="s:string"/>
+    <wsdl:part name="tax2" type="s:string"/>
+    <wsdl:part name="tax3" type="s:string"/>
+    <wsdl:part name="tax4" type="s:string"/>
+    <wsdl:part name="MerchantTransId" type="s:string"/>
+    <wsdl:part name="amount" type="s:string"/>
+    <wsdl:part name="paymentType" type="s:string"/>
+    <wsdl:part name="SecurityCardCode" type="s:string"/>
+    <wsdl:part name="expirationDate" type="s:string"/>
+    <wsdl:part name="cardNumber" type="s:string"/>
+    <wsdl:part name="bankRoutingNumber" type="s:string"/>
+    <wsdl:part name="bankAccountNumber" type="s:string"/>
+    <wsdl:part name="authorizationBit" type="s:string"/>
+    <wsdl:part name="bankClientName" type="s:string"/>
+    <wsdl:part name="filler1" type="s:string"/>
+    <wsdl:part name="filler2" type="s:string"/>
+    <wsdl:part name="filler3" type="s:string"/>
+    <wsdl:part name="filler4" type="s:string"/>
+    <wsdl:part name="Note" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="SendTransactionsHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataSet"/>
+  </wsdl:message>
+  <wsdl:message name="RequestPINPADHttpGetIn">
+    <wsdl:part name="userName" type="s:string"/>
+    <wsdl:part name="passWord" type="s:string"/>
+    <wsdl:part name="customerID" type="s:string"/>
+    <wsdl:part name="customerName" type="s:string"/>
+    <wsdl:part name="customerEmail" type="s:string"/>
+    <wsdl:part name="telephone" type="s:string"/>
+    <wsdl:part name="fax" type="s:string"/>
+    <wsdl:part name="address1" type="s:string"/>
+    <wsdl:part name="address2" type="s:string"/>
+    <wsdl:part name="state" type="s:string"/>
+    <wsdl:part name="city" type="s:string"/>
+    <wsdl:part name="zipCode" type="s:string"/>
+    <wsdl:part name="descriptionBuy" type="s:string"/>
+    <wsdl:part name="operatorId" type="s:string"/>
+    <wsdl:part name="channel" type="s:string"/>
+    <wsdl:part name="tax1" type="s:string"/>
+    <wsdl:part name="tax2" type="s:string"/>
+    <wsdl:part name="tax3" type="s:string"/>
+    <wsdl:part name="tax4" type="s:string"/>
+    <wsdl:part name="MerchantTransId" type="s:string"/>
+    <wsdl:part name="amount" type="s:string"/>
+    <wsdl:part name="expirationDate" type="s:string"/>
+    <wsdl:part name="cardNumber" type="s:string"/>
+    <wsdl:part name="filler1" type="s:string"/>
+    <wsdl:part name="filler2" type="s:string"/>
+    <wsdl:part name="filler3" type="s:string"/>
+    <wsdl:part name="filler4" type="s:string"/>
+    <wsdl:part name="Note" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="RequestPINPADHttpGetOut">
+    <wsdl:part name="Body" element="tns:PinPadResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SubmitATHHttpGetIn">
+    <wsdl:part name="userName" type="s:string"/>
+    <wsdl:part name="passWord" type="s:string"/>
+    <wsdl:part name="Requestid" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="SubmitATHHttpGetOut">
+    <wsdl:part name="Body" element="tns:ATHResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SendTransactionsHttpPostIn">
+    <wsdl:part name="userName" type="s:string"/>
+    <wsdl:part name="passWord" type="s:string"/>
+    <wsdl:part name="customerID" type="s:string"/>
+    <wsdl:part name="customerName" type="s:string"/>
+    <wsdl:part name="customerEmail" type="s:string"/>
+    <wsdl:part name="telephone" type="s:string"/>
+    <wsdl:part name="fax" type="s:string"/>
+    <wsdl:part name="address1" type="s:string"/>
+    <wsdl:part name="address2" type="s:string"/>
+    <wsdl:part name="state" type="s:string"/>
+    <wsdl:part name="city" type="s:string"/>
+    <wsdl:part name="zipCode" type="s:string"/>
+    <wsdl:part name="descriptionBuy" type="s:string"/>
+    <wsdl:part name="operatorId" type="s:string"/>
+    <wsdl:part name="channel" type="s:string"/>
+    <wsdl:part name="tax1" type="s:string"/>
+    <wsdl:part name="tax2" type="s:string"/>
+    <wsdl:part name="tax3" type="s:string"/>
+    <wsdl:part name="tax4" type="s:string"/>
+    <wsdl:part name="MerchantTransId" type="s:string"/>
+    <wsdl:part name="amount" type="s:string"/>
+    <wsdl:part name="paymentType" type="s:string"/>
+    <wsdl:part name="SecurityCardCode" type="s:string"/>
+    <wsdl:part name="expirationDate" type="s:string"/>
+    <wsdl:part name="cardNumber" type="s:string"/>
+    <wsdl:part name="bankRoutingNumber" type="s:string"/>
+    <wsdl:part name="bankAccountNumber" type="s:string"/>
+    <wsdl:part name="authorizationBit" type="s:string"/>
+    <wsdl:part name="bankClientName" type="s:string"/>
+    <wsdl:part name="filler1" type="s:string"/>
+    <wsdl:part name="filler2" type="s:string"/>
+    <wsdl:part name="filler3" type="s:string"/>
+    <wsdl:part name="filler4" type="s:string"/>
+    <wsdl:part name="Note" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="SendTransactionsHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataSet"/>
+  </wsdl:message>
+  <wsdl:message name="RequestPINPADHttpPostIn">
+    <wsdl:part name="userName" type="s:string"/>
+    <wsdl:part name="passWord" type="s:string"/>
+    <wsdl:part name="customerID" type="s:string"/>
+    <wsdl:part name="customerName" type="s:string"/>
+    <wsdl:part name="customerEmail" type="s:string"/>
+    <wsdl:part name="telephone" type="s:string"/>
+    <wsdl:part name="fax" type="s:string"/>
+    <wsdl:part name="address1" type="s:string"/>
+    <wsdl:part name="address2" type="s:string"/>
+    <wsdl:part name="state" type="s:string"/>
+    <wsdl:part name="city" type="s:string"/>
+    <wsdl:part name="zipCode" type="s:string"/>
+    <wsdl:part name="descriptionBuy" type="s:string"/>
+    <wsdl:part name="operatorId" type="s:string"/>
+    <wsdl:part name="channel" type="s:string"/>
+    <wsdl:part name="tax1" type="s:string"/>
+    <wsdl:part name="tax2" type="s:string"/>
+    <wsdl:part name="tax3" type="s:string"/>
+    <wsdl:part name="tax4" type="s:string"/>
+    <wsdl:part name="MerchantTransId" type="s:string"/>
+    <wsdl:part name="amount" type="s:string"/>
+    <wsdl:part name="expirationDate" type="s:string"/>
+    <wsdl:part name="cardNumber" type="s:string"/>
+    <wsdl:part name="filler1" type="s:string"/>
+    <wsdl:part name="filler2" type="s:string"/>
+    <wsdl:part name="filler3" type="s:string"/>
+    <wsdl:part name="filler4" type="s:string"/>
+    <wsdl:part name="Note" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="RequestPINPADHttpPostOut">
+    <wsdl:part name="Body" element="tns:PinPadResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SubmitATHHttpPostIn">
+    <wsdl:part name="userName" type="s:string"/>
+    <wsdl:part name="passWord" type="s:string"/>
+    <wsdl:part name="Requestid" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="SubmitATHHttpPostOut">
+    <wsdl:part name="Body" element="tns:ATHResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="serviceh2hSoap">
+    <wsdl:operation name="SendTransactions">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This XML Web Service Authorize VISA, MasterCard
+        and AMEX Payments with EVERTEC
+      </wsdl:documentation>
+      <wsdl:input message="tns:SendTransactionsSoapIn"/>
+      <wsdl:output message="tns:SendTransactionsSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="RequestPINPAD">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">EVERTEC - ATH REQUEST PINPAD
+      </wsdl:documentation>
+      <wsdl:input message="tns:RequestPINPADSoapIn"/>
+      <wsdl:output message="tns:RequestPINPADSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SubmitATH">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">EVERTEC - ATH SUBMIT PAYMENT
+      </wsdl:documentation>
+      <wsdl:input message="tns:SubmitATHSoapIn"/>
+      <wsdl:output message="tns:SubmitATHSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="serviceh2hHttpGet">
+    <wsdl:operation name="SendTransactions">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This XML Web Service Authorize VISA, MasterCard
+        and AMEX Payments with EVERTEC
+      </wsdl:documentation>
+      <wsdl:input message="tns:SendTransactionsHttpGetIn"/>
+      <wsdl:output message="tns:SendTransactionsHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="RequestPINPAD">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">EVERTEC - ATH REQUEST PINPAD
+      </wsdl:documentation>
+      <wsdl:input message="tns:RequestPINPADHttpGetIn"/>
+      <wsdl:output message="tns:RequestPINPADHttpGetOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SubmitATH">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">EVERTEC - ATH SUBMIT PAYMENT
+      </wsdl:documentation>
+      <wsdl:input message="tns:SubmitATHHttpGetIn"/>
+      <wsdl:output message="tns:SubmitATHHttpGetOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="serviceh2hHttpPost">
+    <wsdl:operation name="SendTransactions">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This XML Web Service Authorize VISA, MasterCard
+        and AMEX Payments with EVERTEC
+      </wsdl:documentation>
+      <wsdl:input message="tns:SendTransactionsHttpPostIn"/>
+      <wsdl:output message="tns:SendTransactionsHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="RequestPINPAD">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">EVERTEC - ATH REQUEST PINPAD
+      </wsdl:documentation>
+      <wsdl:input message="tns:RequestPINPADHttpPostIn"/>
+      <wsdl:output message="tns:RequestPINPADHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="SubmitATH">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">EVERTEC - ATH SUBMIT PAYMENT
+      </wsdl:documentation>
+      <wsdl:input message="tns:SubmitATHHttpPostIn"/>
+      <wsdl:output message="tns:SubmitATHHttpPostOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="serviceh2hSoap" type="tns:serviceh2hSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="SendTransactions">
+      <soap:operation soapAction="http://tempuri.org/cpsh2h/serviceh2h/SendTransactions" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RequestPINPAD">
+      <soap:operation soapAction="http://tempuri.org/cpsh2h/serviceh2h/RequestPINPAD" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SubmitATH">
+      <soap:operation soapAction="http://tempuri.org/cpsh2h/serviceh2h/SubmitATH" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="serviceh2hSoap12" type="tns:serviceh2hSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="SendTransactions">
+      <soap12:operation soapAction="http://tempuri.org/cpsh2h/serviceh2h/SendTransactions" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RequestPINPAD">
+      <soap12:operation soapAction="http://tempuri.org/cpsh2h/serviceh2h/RequestPINPAD" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SubmitATH">
+      <soap12:operation soapAction="http://tempuri.org/cpsh2h/serviceh2h/SubmitATH" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="serviceh2hHttpGet" type="tns:serviceh2hHttpGet">
+    <http:binding verb="GET"/>
+    <wsdl:operation name="SendTransactions">
+      <http:operation location="/SendTransactions"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RequestPINPAD">
+      <http:operation location="/RequestPINPAD"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SubmitATH">
+      <http:operation location="/SubmitATH"/>
+      <wsdl:input>
+        <http:urlEncoded/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="serviceh2hHttpPost" type="tns:serviceh2hHttpPost">
+    <http:binding verb="POST"/>
+    <wsdl:operation name="SendTransactions">
+      <http:operation location="/SendTransactions"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RequestPINPAD">
+      <http:operation location="/RequestPINPAD"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SubmitATH">
+      <http:operation location="/SubmitATH"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="serviceh2h">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This XML Web service allows clients to log on to
+      Multimerchant Pay System. Ver. 06212013
+    </wsdl:documentation>
+    <wsdl:port name="serviceh2hSoap" binding="tns:serviceh2hSoap">
+      <soap:address location="https://mmpaytest.evertecinc.com/cpsh2h/serviceh2h.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="serviceh2hSoap12" binding="tns:serviceh2hSoap12">
+      <soap12:address location="https://mmpaytest.evertecinc.com/cpsh2h/serviceh2h.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="serviceh2hHttpGet" binding="tns:serviceh2hHttpGet">
+      <http:address location="https://mmpaytest.evertecinc.com/cpsh2h/serviceh2h.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="serviceh2hHttpPost" binding="tns:serviceh2hHttpPost">
+      <http:address location="https://mmpaytest.evertecinc.com/cpsh2h/serviceh2h.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.e4gslab</groupId>
+	<artifactId>claro-payment-gateway-service</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<packaging>war</packaging>
+	<name>claro-payment-gateway-service</name>
+
+	<properties>
+		<endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<org.springframework.version>4.0.9.RELEASE</org.springframework.version>
+		<org.springframework.data.jpa>1.8.0.RELEASE</org.springframework.data.jpa>
+		<jersey.version>2.3.1</jersey.version>
+	</properties>
+
+	<profiles>
+		<profile>
+			<id>development</id>
+			<properties>
+				<com.e4gslab.payment.soap.endPoint>https://everpaycert.evertecinc.com/TransactaSDK/Transacta.ASMX</com.e4gslab.payment.soap.endPoint>
+				<com.e4gslab.payment.soap.user>CERT4549444000020</com.e4gslab.payment.soap.user>
+				<com.e4gslab.payment.soap.password>6ZL051g9</com.e4gslab.payment.soap.password>
+
+				<!-- H2H Service -->
+				<com.e4gslab.payment.merchant.h2h.endPoint>https://everpaycert.evertecinc.com/cpsh2h/?wsdl</com.e4gslab.payment.merchant.h2h.endPoint>
+				<com.e4gslab.payment.merchant.h2h.username>CERT4549444000019</com.e4gslab.payment.merchant.h2h.username>
+				<com.e4gslab.payment.merchant.h2h.password>133U64r6</com.e4gslab.payment.merchant.h2h.password>
+
+				<!-- H2H credit Service -->
+				<com.e4gslab.payment.credit.merchant.h2h.endPoint>https://mmpaytest.evertecinc.com/cpsh2h/serviceh2h.asmx</com.e4gslab.payment.credit.merchant.h2h.endPoint>
+				<com.e4gslab.payment.credit.merchant.h2h.username>CERT4549444000020</com.e4gslab.payment.credit.merchant.h2h.username>
+				<com.e4gslab.payment.credit.merchant.h2h.password>6A73F3nY</com.e4gslab.payment.credit.merchant.h2h.password>
+				<com.e4gslab.payment.credit.merchant.h2h.id>EBIL:H2H:PRO</com.e4gslab.payment.credit.merchant.h2h.id>
+				<com.e4gslab.payment.credit.merchant.h2h.name>EBILL H2H  PROD</com.e4gslab.payment.credit.merchant.h2h.name>
+				<com.e4gslab.payment.credit.merchant.h2h.createddate>2016-08-11 16:55:54</com.e4gslab.payment.credit.merchant.h2h.createddate>
+				<com.e4gslab.payment.credit.merchant.h2h.updateddate>2016-08-11 16:55:54</com.e4gslab.payment.credit.merchant.h2h.updateddate>
+				<com.e4gslab.payment.credit.merchant.h2h.typeid>MCE:H2H</com.e4gslab.payment.credit.merchant.h2h.typeid>
+				<com.e4gslab.payment.mcredit.merchant.h2h.enabled>Y</com.e4gslab.payment.mcredit.merchant.h2h.enabled>
+
+				<com.e4gslab.payment.credit.merchant.h2h.aplicationid>At01bMi0aXhr6ktmTaox</com.e4gslab.payment.credit.merchant.h2h.aplicationid>
+				<com.e4gslab.payment.credit.merchant.h2h.keyencrypt>aA@d39Yugle5yc2ko!</com.e4gslab.payment.credit.merchant.h2h.keyencrypt>
+
+				<com.e4gslab.payment.credit.merchant.type.h2h.id>MCE:H2H</com.e4gslab.payment.credit.merchant.type.h2h.id>
+				<com.e4gslab.payment.credit.merchant.type.h2h.name>H2H</com.e4gslab.payment.credit.merchant.type.h2h.name>
+				<com.e4gslab.payment.credit.merchant.type.h2h.createddate>2016-09-26 23:41:19</com.e4gslab.payment.credit.merchant.type.h2h.createddate>
+				<com.e4gslab.payment.credit.merchant.type.h2h.enabled>Y</com.e4gslab.payment.credit.merchant.type.h2h.enabled>
+
+
+				<!-- Multi Merchant Service -->
+				<com.e4gslab.payment.merchant.mmpay.endPoint>https://mmpay.evertecinc.com/webservicev2/wscheckoutpayment.asmx?wsdl</com.e4gslab.payment.merchant.mmpay.endPoint>
+			</properties>
+		</profile>
+
+		<profile>
+			<id>production</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<com.e4gslab.payment.soap.endPoint>https://transacta.evertecinc.com/TransactaSDK/Transacta.ASMX</com.e4gslab.payment.soap.endPoint>
+				<com.e4gslab.payment.soap.user>Miclar130312</com.e4gslab.payment.soap.user>
+				<com.e4gslab.payment.soap.password>brtgptw75368</com.e4gslab.payment.soap.password>
+
+				<!-- H2H Service -->
+				<com.e4gslab.payment.merchant.h2h.endPoint>https://everpaycert.evertecinc.com/cpsh2h/?wsdl</com.e4gslab.payment.merchant.h2h.endPoint>
+				<com.e4gslab.payment.merchant.h2h.username>CERT4549444000019</com.e4gslab.payment.merchant.h2h.username>
+				<com.e4gslab.payment.merchant.h2h.password>133U64r6</com.e4gslab.payment.merchant.h2h.password>
+
+				<!-- H2H credit Service -->
+				<com.e4gslab.payment.credit.merchant.h2h.endPoint>https://mmpaytest.evertecinc.com/cpsh2h/serviceh2h.asmx</com.e4gslab.payment.credit.merchant.h2h.endPoint>
+				<com.e4gslab.payment.credit.merchant.h2h.username>CERT4549444000020</com.e4gslab.payment.credit.merchant.h2h.username>
+				<com.e4gslab.payment.credit.merchant.h2h.password>6A73F3nY</com.e4gslab.payment.credit.merchant.h2h.password>
+				<com.e4gslab.payment.credit.merchant.h2h.id>EBIL:H2H:PRO</com.e4gslab.payment.credit.merchant.h2h.id>
+				<com.e4gslab.payment.credit.merchant.h2h.name>EBILL H2H  PROD</com.e4gslab.payment.credit.merchant.h2h.name>
+				<com.e4gslab.payment.credit.merchant.h2h.createddate>2016-08-11 16:55:54</com.e4gslab.payment.credit.merchant.h2h.createddate>
+				<com.e4gslab.payment.credit.merchant.h2h.updateddate>2016-08-11 16:55:54</com.e4gslab.payment.credit.merchant.h2h.updateddate>
+				<com.e4gslab.payment.credit.merchant.h2h.typeid>MCE:H2H</com.e4gslab.payment.credit.merchant.h2h.typeid>
+				<com.e4gslab.payment.mcredit.merchant.h2h.enabled>Y</com.e4gslab.payment.mcredit.merchant.h2h.enabled>
+
+				<com.e4gslab.payment.credit.merchant.h2h.aplicationid>At01bMi0aXhr6ktmTaox</com.e4gslab.payment.credit.merchant.h2h.aplicationid>
+				<com.e4gslab.payment.credit.merchant.h2h.keyencrypt>aA@d39Yugle5yc2ko!</com.e4gslab.payment.credit.merchant.h2h.keyencrypt>
+
+				<com.e4gslab.payment.credit.merchant.type.h2h.id>MCE:H2H</com.e4gslab.payment.credit.merchant.type.h2h.id>
+				<com.e4gslab.payment.credit.merchant.type.h2h.name>H2H</com.e4gslab.payment.credit.merchant.type.h2h.name>
+				<com.e4gslab.payment.credit.merchant.type.h2h.createddate>2016-09-26 23:41:19</com.e4gslab.payment.credit.merchant.type.h2h.createddate>
+				<com.e4gslab.payment.credit.merchant.type.h2h.enabled>Y</com.e4gslab.payment.credit.merchant.type.h2h.enabled>
+
+
+				<!-- Multi Merchant Service -->
+				<com.e4gslab.payment.merchant.mmpay.endPoint>https://mmpay.evertecinc.com/webservicev2/wscheckoutpayment.asmx?wsdl</com.e4gslab.payment.merchant.mmpay.endPoint>
+
+			</properties>
+		</profile>
+	</profiles>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.glassfish.jersey</groupId>
+				<artifactId>jersey-bom</artifactId>
+				<version>${jersey.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+
+		</dependencies>
+	</dependencyManagement>
+
+	<build>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.cxf</groupId>
+				<artifactId>cxf-codegen-plugin</artifactId>
+				<version>3.1.1</version>
+				<executions>
+					<execution>
+						<id>generate-sources</id>
+						<phase>generate-sources</phase>
+						<configuration>
+							<sourceRoot>${project.build.directory}/generated-sources/cxf</sourceRoot>
+							<wsdlOptions>
+								<wsdlOption>
+									<!--<wsdl>${project.basedir}/src/main/resources/com/e4gslab/claro/payments/gateway/wsdl/Transacta.ASMX.wsdl</wsdl>-->
+									<wsdl>${project.basedir}/src/main/resources/com/e4gslab/claro/payments/gateway/wsdl/Serviceh2h.ASMX.wsdl</wsdl>
+									<!--<wsdlLocation>classpath:com/e4gslab/claro/payments/gateway/wsdl/Transacta.ASMX.wsdl</wsdlLocation>-->
+									<wsdlLocation>classpath:com/e4gslab/claro/payments/gateway/wsdl/Serviceh2h.ASMX.wsdl</wsdlLocation>
+								</wsdlOption>
+							</wsdlOptions>
+						</configuration>
+						<goals>
+							<goal>wsdl2java</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+
+		<finalName>claro-payment-gateway-service</finalName>
+	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.e4gslab</groupId>
+			<artifactId>claro-payment-gateway-model</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.oracle</groupId>
+			<artifactId>ojdbc7</artifactId>
+			<version>12.1.0.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.axis</groupId>
+			<artifactId>axis</artifactId>
+			<version>1.4</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.xml</groupId>
+			<artifactId>jaxrpc-api</artifactId>
+			<version>1.1</version>
+		</dependency>
+
+		<!-- //////////////////////////////////////////////////// -->
+		<!-- Java stub generator for WSDL -->
+		<!-- //////////////////////////////////////////////////// -->
+
+		<dependency>
+			<groupId>wsdl4j</groupId>
+			<artifactId>wsdl4j</artifactId>
+			<version>1.6.3</version>
+		</dependency>
+
+		<!-- //////////////////////////////////////////////////// -->
+		<!-- GSON -->
+		<!-- //////////////////////////////////////////////////// -->
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.2.4</version>
+		</dependency>
+
+		<!-- //////////////////////////////////////////////////// -->
+		<!-- Apache Felix -->
+		<!-- //////////////////////////////////////////////////// -->
+		<dependency>
+			<groupId>org.apache.felix</groupId>
+			<artifactId>org.apache.felix.webconsole</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+
+		<!-- //////////////////////////////////////////////////// -->
+		<!-- Log4J -->
+		<!-- //////////////////////////////////////////////////// -->
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.7.7</version>
+		</dependency>
+
+		<!-- //////////////////////////////////////////////////// -->
+		<!-- JERSEY-SPRING -->
+		<!-- //////////////////////////////////////////////////// -->
+		<dependency>
+			<groupId>org.glassfish.jersey.ext</groupId>
+			<artifactId>jersey-spring3</artifactId>
+		</dependency>
+
+		<!-- //////////////////////////////////////////////////// -->
+		<!-- JERSEY-TEST -->
+		<!-- //////////////////////////////////////////////////// -->
+		<dependency>
+			<groupId>org.glassfish.jersey.test-framework.providers</groupId>
+			<artifactId>jersey-test-framework-provider-grizzly2</artifactId>
+		</dependency>
+
+		<!-- //////////////////////////////////////////////////// -->
+		<!-- SPRING-DATA-JPA -->
+		<!-- //////////////////////////////////////////////////// -->
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-jpa</artifactId>
+			<version>${org.springframework.data.jpa}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-discovery</groupId>
+			<artifactId>commons-discovery</artifactId>
+			<version>0.5</version>
+		</dependency>
+
+		<!-- //////////////////////////////////////////////////// -->
+		<!-- SPRING -->
+		<!-- //////////////////////////////////////////////////// -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>${org.springframework.version}</version>
+		</dependency>
+		<!-- Expression Language (depends on spring-core) Define this if you use 
+			Spring Expression APIs (org.springframework.expression.*) -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-expression</artifactId>
+			<version>${org.springframework.version}</version>
+		</dependency>
+		<!-- Bean Factory and JavaBeans utilities (depends on spring-core) Define 
+			this if you use Spring Bean APIs (org.springframework.beans.*) -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-beans</artifactId>
+			<version>${org.springframework.version}</version>
+		</dependency>
+		<!-- Aspect Oriented Programming (AOP) Framework (depends on spring-core, 
+			spring-beans) Define this if you use Spring AOP APIs (org.springframework.aop.*) -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+			<version>${org.springframework.version}</version>
+		</dependency>
+		<!-- Application Context (depends on spring-core, spring-expression, spring-aop, 
+			spring-beans) This is the central artifact for Spring's Dependency Injection 
+			Container and is generally always defined -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${org.springframework.version}</version>
+		</dependency>
+		<!-- Various Application Context utilities, including EhCache, JavaMail, 
+			Quartz, and Freemarker integration Define this if you need any of these integrations -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>${org.springframework.version}</version>
+		</dependency>
+		<!-- Transaction Management Abstraction (depends on spring-core, spring-beans, 
+			spring-aop, spring-context) Define this if you use Spring Transactions or 
+			DAO Exception Hierarchy (org.springframework.transaction.*/org.springframework.dao.*) -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+			<version>${org.springframework.version}</version>
+		</dependency>
+		<!-- JDBC Data Access Library (depends on spring-core, spring-beans, spring-context, 
+			spring-tx) Define this if you use Spring's JdbcTemplate API (org.springframework.jdbc.*) -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>${org.springframework.version}</version>
+		</dependency>
+		<!-- Web application development utilities applicable to both Servlet and 
+			Portlet Environments (depends on spring-core, spring-beans, spring-context) 
+			Define this if you use Spring MVC, or wish to use Struts, JSF, or another 
+			web framework with Spring (org.springframework.web.*) -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${org.springframework.version}</version>
+		</dependency>
+		<!-- Support for testing Spring applications with tools such as JUnit and 
+			TestNG This artifact is generally always defined with a 'test' scope for 
+			the integration testing framework and unit testing stubs -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${org.springframework.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.0.1</version>
+			<scope>provided</scope>
+		</dependency>
+
+
+		<!-- <dependency> -->
+		<!-- <groupId>javax.servlet</groupId> -->
+		<!-- <artifactId>javax.servlet-api</artifactId> -->
+		<!-- <version>3.0.1</version> -->
+		<!-- </dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.springframework</groupId> -->
+		<!-- <artifactId>spring-webmvc</artifactId> -->
+		<!-- <version>4.0.9.RELEASE</version> -->
+		<!-- </dependency> -->
+
+		<dependency>
+			<groupId>com.sun.jersey</groupId>
+			<artifactId>jersey-json</artifactId>
+			<version>1.19</version>
+			<exclusions>
+				<exclusion>
+					<groupId>javax.ws.rs</groupId>
+					<artifactId>jsr311-api</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.jersey.media</groupId>
+			<artifactId>jersey-media-json-jackson</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.jaxrs</groupId>
+			<artifactId>jackson-jaxrs-json-provider</artifactId>
+			<version>2.4.1</version>
+		</dependency>
+		<!-- Para Encriptar -->
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>1.10</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>2.3</version>
+		</dependency>
+		<!-- 		<dependency> -->
+		<!-- 	<groupId>org.springframework</groupId> -->
+		<!-- 	<artifactId>spring-tx</artifactId> -->
+		<!-- 	<version>4.0.4.RELEASE</version> -->
+		<!-- </dependency> -->
+
+	</dependencies>
+</project>

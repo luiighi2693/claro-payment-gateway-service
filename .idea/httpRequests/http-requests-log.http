@@ -1,0 +1,312 @@
+POST http://localhost:9595/payment/creditcardh2h/process?accountType=1
+Accept: */*
+Content-Type: application/json
+Cache-Control: no-cache
+
+{
+"cardNum": "4548400000000631",
+"expDate": "12/2019",
+"nameOnCard": "Claro Puerto Rico Checkout",
+"amount": "0.01",
+"zip": "00612",
+"street": "test",
+"cvNum": "781",
+"aplicationID": "Dt01rFi02XUrIktH2345",
+"pcrftransaID": "42M0Jr57474977516C5d",
+"accountNumber": "4356787543"
+}
+
+<> 2018-06-21T123105.409.json
+
+###
+
+POST http://localhost:9595/payment/creditcardh2h/process?accountType=DEB
+Accept: */*
+Content-Type: application/json
+Cache-Control: no-cache
+
+{   "cardNum": "12345678",   "expDate": "12/21",   "nameOnCard": "test",   "amount": "0.01",   "zip": "222111",   "street": "test",   "cvNum": "616",   "aplicationID": "Dt01rFi02XUrIktH2345",   "pcrftransaID": "42M0Jr57474977516C5d",   "accountNumber": "4356787543" }
+
+<> 2018-06-20T070749.409.json
+
+###
+
+POST http://localhost:9595/payment/creditcardh2h/process?accountType=DEB
+Accept: */*
+Content-Type: application/json
+Cache-Control: no-cache
+
+{   "cardNum": "12345678",   "expDate": "12/21",   "nameOnCard": "test",   "amount": "0.01",   "zip": "222111",   "street": "test",   "cvNum": "616",   "aplicationID": "Dt01rFi02XUrIktH2345",   "pcrftransaID": "42M0Jr57474977516C5d",   "accountNumber": "43567875432" }
+
+<> 2018-06-20T070536.409.json
+
+###
+
+POST http://localhost:9595/payment/creditcardh2h/process?accountType=DEB
+Accept: */*
+Content-Type: application/json
+Cache-Control: no-cache
+
+{   "cardNum": "12345678",   "expDate": "12/21",   "nameOnCard": "test",   "amount": "0.01",   "zip": "222111",   "street": "test",   "cvNum": "616",   "aplicationID": "Dt01rFi02XUrIktH2345",   "pcrftransaID": "42M0Jr57474977516C5d",   "accountNumber": "43567875432" }
+
+<> 2018-06-20T053709.409.json
+
+###
+
+POST http://localhost:9595/payment/creditcardh2h/process?accountType=DEB
+Accept: */*
+Content-Type: application/json
+Cache-Control: no-cache
+
+{   "cardNum": "12345678",   "expDate": "12/21",   "nameOnCard": "test",   "amount": "0.01",   "zip": "222111",   "street": "test",   "cvNum": "616",   "aplicationID": "Dt01rFi02XUrIktH2345",   "pcrftransaID": "42M0Jr57474977516C5d",   "accountNumber": "43567875432" }
+
+<> 2018-06-20T052735.409.json
+
+###
+
+POST http://localhost:9595/payment/creditcardh2h/process?accountType=DEB
+Accept: */*
+Content-Type: application/json
+Cache-Control: no-cache
+
+{   "cardNum": "12345678",   "expDate": "12/21",   "nameOnCard": "test",   "amount": "0.01",   "zip": "222111",   "street": "test",   "cvNum": "616",   "aplicationID": "Dt01rFi02XUrIktH2345",   "pcrftransaID": "42M0Jr57474977516C5d",   "accountNumber": "43567875432" }
+
+###
+
+POST http://localhost:9595/payment/creditcardh2h/process?accountType=DEB
+Accept: */*
+Content-Type: application/json
+Cache-Control: no-cache
+
+{   "cardNum": "12345678",   "expDate": "12/21",   "nameOnCard": "test",   "amount": "0.01",   "zip": "222111",   "street": "test",   "cvNum": "616",   "aplicationID": "Dt01rFi02XUrIktH2345",   "pcrftransaID": "42M0Jr57474977516C5d",   "accountNumber": "43567875432" }
+
+<> 2018-06-20T042458.409.json
+
+###
+
+POST http://localhost:9595/payment/creditcardh2h/process?accountType=DEB
+Accept: */*
+Content-Type: application/json
+Cache-Control: no-cache
+
+{   "cardNum": "12345678",   "expDate": "12/21",   "nameOnCard": "test",   "amount": "0.01",   "zip": "222111",   "street": "test",   "cvNum": "616",   "aplicationID": "Dt01rFi02XUrIktH2345",   "pcrftransaID": "42M0Jr57474977516C5d",   "accountNumber": "43567875432" }
+
+<> 2018-06-20T035816.409.json
+
+###
+
+POST http://localhost:9595/payment/creditcardh2h/process?accountType=DEB
+Accept: */*
+Content-Type: application/json
+Cache-Control: no-cache
+
+{   "cardNum": "12345678",   "expDate": "12/21",   "nameOnCard": "test",   "amount": "0.01",   "zip": "222111",   "street": "test",   "cvNum": "616",   "aplicationID": "Dt01rFi02XUrIktH2345",   "pcrftransaID": "42M0Jr57474977516C5d",   "accountNumber": "43567875432" }
+
+<> 2018-06-20T034930.409.json
+
+###
+
+POST http://localhost:9595/payment/creditcardh2h/process?accountType=DEB
+Accept: */*
+Content-Type: application/json
+Cache-Control: no-cache
+
+{   "cardNum": "12345678",   "expDate": "12/21",   "nameOnCard": "test",   "amount": "0.01",   "zip": "222111",   "street": "test",   "cvNum": "616",   "aplicationID": "Dt01rFi02XUrIktH2345",   "pcrftransaID": "aA@d39Yugle5yc2ko!",   "accountNumber": "43567875432" }
+
+<> 2018-06-20T034053.409.json
+
+###
+
+POST http://localhost:9595/payment/creditcardh2h/process?accountType=DEB
+Accept: */*
+Content-Type: application/json
+Cache-Control: no-cache
+
+{   "cardNum": "12345678",   "expDate": "12/21",   "nameOnCard": "test",   "amount": "0.01",   "zip": "222111",   "street": "test",   "cvNum": "616",   "aplicationID": "Dt01rFi02XUrIktH2345",   "pcrftransaID": "???",   "accountNumber": "43567875432" }
+
+<> 2018-06-20T033651.409.json
+
+###
+
+POST http://localhost:9595/payment/creditcardh2h/process?accountType=DEB
+Accept: */*
+Content-Type: application/json
+Cache-Control: no-cache
+
+{   "cardNum": "12345678",   "expDate": "12/21",   "nameOnCard": "test",   "amount": "0.01",   "zip": "222111",   "street": "test",   "cvNum": "616",   "aplicationID": "Dt01rFi02XUrIktH2345",   "pcrftransaID": "???",   "accountNumber": "43567875432" }
+
+<> 2018-06-19T071212.409.json
+
+###
+
+POST http://localhost:9595/payment/creditcardh2h/process?accountType=DEB
+Accept: */*
+Content-Type: application/json
+Cache-Control: no-cache
+
+{   "cardNum": "12345678",   "expDate": "12/21",   "nameOnCard": "test",   "amount": "0.01",   "zip": "222111",   "street": "test",   "cvNum": "616",   "aplicationID": "Dt01rFi02XUrIktH2345",   "pcrftransaID": "???",   "accountNumber": "43567875432", }
+
+<> 2018-06-19T070945.500.html
+
+###
+
+POST http://localhost:9595/payment/creditcardh2h/process?accountType=DEB
+Accept: */*
+Cache-Control: no-cache
+
+{   "cardNum": "12345678",   "expDate": "12/21",   "nameOnCard": "test",   "amount": "0.01",   "zip": "222111",   "street": "test",   "cvNum": "616",   "aplicationID": "Dt01rFi02XUrIktH2345",   "pcrftransaID": "???",   "accountNumber": "43567875432", }
+
+<> 2018-06-19T070848.415.html
+
+###
+
+POST http://localhost:9595?accountType=DEB
+Accept: */*
+Cache-Control: no-cache
+
+{   "cardNum": "12345678",   "expDate": "12/21",   "nameOnCard": "test",   "amount": "0.01",   "zip": "222111",   "street": "test",   "cvNum": "616",   "aplicationID": "Dt01rFi02XUrIktH2345",   "pcrftransaID": "???",   "accountNumber": "43567875432", }
+
+<> 2018-06-19T070755.200.html
+
+###
+
+POST http://localhost:9595/creditcardh2h/process?accountType=DEB
+Accept: */*
+Cache-Control: no-cache
+
+{   "cardNum": "12345678",   "expDate": "12/21",   "nameOnCard": "test",   "amount": "0.01",   "zip": "222111",   "street": "test",   "cvNum": "616",   "aplicationID": "Dt01rFi02XUrIktH2345",   "pcrftransaID": "???",   "accountNumber": "43567875432", }
+
+<> 2018-06-19T070743.404.html
+
+###
+
+POST http://localhost:9595/payment?accountType=DEB
+Accept: */*
+Cache-Control: no-cache
+
+{   "cardNum": "12345678",   "expDate": "12/21",   "nameOnCard": "test",   "amount": "0.01",   "zip": "222111",   "street": "test",   "cvNum": "616",   "aplicationID": "Dt01rFi02XUrIktH2345",   "pcrftransaID": "???",   "accountNumber": "43567875432", }
+
+<> 2018-06-19T070717.404.html
+
+###
+
+POST http://localhost:9595/payment?accountType=DEB
+Accept: */*
+Cache-Control: no-cache
+
+{   "cardNum": "12345678",   "expDate": "12/21",   "nameOnCard": "test",   "amount": "0.01",   "zip": "222111",   "street": "test",   "cvNum": "616",   "aplicationID": "Dt01rFi02XUrIktH2345",   "pcrftransaID": "???",   "accountNumber": "43567875432", }
+
+<> 2018-06-19T070716.404.html
+
+###
+
+POST http://localhost:9595/payment?accountType=DEB
+Accept: */*
+Cache-Control: no-cache
+
+{   "cardNum": "12345678",   "expDate": "12/21",   "nameOnCard": "test",   "amount": "0.01",   "zip": "222111",   "street": "test",   "cvNum": "616",   "aplicationID": "Dt01rFi02XUrIktH2345",   "pcrftransaID": "???",   "accountNumber": "43567875432", }
+
+<> 2018-06-19T070710.404.html
+
+###
+
+POST http://localhost:9595/creditcardh2h/process?accountType=DEB
+Accept: */*
+Cache-Control: no-cache
+
+{   "cardNum": "12345678",   "expDate": "12/21",   "nameOnCard": "test",   "amount": "0.01",   "zip": "222111",   "street": "test",   "cvNum": "616",   "aplicationID": "Dt01rFi02XUrIktH2345",   "pcrftransaID": "???",   "accountNumber": "43567875432", }
+
+<> 2018-06-19T070652.404.html
+
+###
+
+POST http://localhost:9595/creditcardh2h/process?accountType=DEB
+Accept: */*
+Cache-Control: no-cache
+
+{   "cardNum": "12345678",   "expDate": "12/21",   "nameOnCard": "test",   "amount": "0.01",   "zip": "222111",   "street": "test",   "cvNum": "616",   "aplicationID": "Dt01rFi02XUrIktH2345",   "pcrftransaID": "???",   "accountNumber": "43567875432", }
+
+<> 2018-06-19T070646-2.404.html
+
+###
+
+POST http://localhost:9595/creditcardh2h/process?accountType=DEB
+Accept: */*
+Cache-Control: no-cache
+
+{   "cardNum": "12345678",   "expDate": "12/21",   "nameOnCard": "test",   "amount": "0.01",   "zip": "222111",   "street": "test",   "cvNum": "616",   "aplicationID": "Dt01rFi02XUrIktH2345",   "pcrftransaID": "???",   "accountNumber": "43567875432", }
+
+<> 2018-06-19T070646-1.404.html
+
+###
+
+POST http://localhost:9595/creditcardh2h/process?accountType=DEB
+Accept: */*
+Cache-Control: no-cache
+
+{   "cardNum": "12345678",   "expDate": "12/21",   "nameOnCard": "test",   "amount": "0.01",   "zip": "222111",   "street": "test",   "cvNum": "616",   "aplicationID": "Dt01rFi02XUrIktH2345",   "pcrftransaID": "???",   "accountNumber": "43567875432", }
+
+<> 2018-06-19T070646.404.html
+
+###
+
+POST http://localhost:9595/creditcardh2h/process?accountType=DEB
+Accept: */*
+Cache-Control: no-cache
+
+{   "cardNum": "12345678",   "expDate": "12/21",   "nameOnCard": "test",   "amount": "0.01",   "zip": "222111",   "street": "test",   "cvNum": "616",   "aplicationID": "Dt01rFi02XUrIktH2345",   "pcrftransaID": "???",   "accountNumber": "43567875432", }
+
+<> 2018-06-19T070645.404.html
+
+###
+
+POST http://localhost:9595/creditcardh2h/process?accountType=DEB
+Accept: */*
+Cache-Control: no-cache
+
+{   "cardNum": "12345678",   "expDate": "12/21",   "nameOnCard": "test",   "amount": "0.01",   "zip": "222111",   "street": "test",   "cvNum": "616",   "aplicationID": "Dt01rFi02XUrIktH2345",   "pcrftransaID": "???",   "accountNumber": "43567875432", }
+
+<> 2018-06-19T070632.404.html
+
+###
+
+POST http://localhost:9595/payment?accountType=DEB
+Accept: */*
+Cache-Control: no-cache
+
+{   "cardNum": "12345678",   "expDate": "12/21",   "nameOnCard": "test",   "amount": "0.01",   "zip": "222111",   "street": "test",   "cvNum": "616",   "aplicationID": "Dt01rFi02XUrIktH2345",   "pcrftransaID": "???",   "accountNumber": "43567875432", }
+
+<> 2018-06-19T070610.404.html
+
+###
+
+POST http://localhost:9595/payment?accountType=DEB
+Accept: */*
+Cache-Control: no-cache
+
+{   "cardNum": "12345678",   "expDate": "12/21",   "nameOnCard": "test",   "amount": "0.01",   "zip": "222111",   "street": "test",   "cvNum": "616",   "aplicationID": "Dt01rFi02XUrIktH2345",   "pcrftransaID": "???",   "accountNumber": "43567875432", }
+
+<> 2018-06-19T070603.404.html
+
+###
+
+POST http://localhost:9595?accountType=DEB
+Accept: */*
+Cache-Control: no-cache
+
+{   "cardNum": "12345678",   "expDate": "12/21",   "nameOnCard": "test",   "amount": "0.01",   "zip": "222111",   "street": "test",   "cvNum": "616",   "aplicationID": "Dt01rFi02XUrIktH2345",   "pcrftransaID": "???",   "accountNumber": "43567875432", }
+
+<> 2018-06-19T070533.200.html
+
+###
+
+POST http://localhost:9595?accountType=DEB
+Accept: */*
+Cache-Control: no-cache
+
+{   "cardNum": "12345678",   "expDate": "12/21",   "nameOnCard": "test",   "amount": "0.01",   "zip": "222111",   "street": "test",   "cvNum": "616",   "aplicationID": "Dt01rFi02XUrIktH2345",   "pcrftransaID": "???",   "accountNumber": "43567875432", }
+
+<> 2018-06-19T070503.200.html
+
+###
+

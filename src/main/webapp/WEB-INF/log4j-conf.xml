@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "dtd/log4j.dtd" >
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+    <appender name="Console" class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+        <param name="ConversionPattern" value="%-5p (%F:%L) - %m%n" />  
+        </layout>
+    </appender>
+
+    <category name="org.hibernate" additivity="false">
+       <priority value="error"/>
+       <appender-ref ref="Console"/>
+    </category>
+    
+    <category name="com.mchange" additivity="false">
+       <priority value="error"/>
+       <appender-ref ref="Console"/>
+    </category>    
+
+    <category name="org.springframework" additivity="false">
+       <priority value="error"/>
+       <appender-ref ref="Console"/>
+    </category>
+ 
+    <root>
+        <priority value="info" />
+        <appender-ref ref="Console" />
+   <!-- <appender-ref ref="LogFile " /> -->
+    </root>
+</log4j:configuration>
