@@ -405,48 +405,10 @@ public class CreditCardResourceH2H {
 		logger.info(extData);
 		logger.info("******************************");
 
-		/*
-		* TDCResponse res = this.evertecTxConnection.sendTransactions(
-					config.get("evertec.transaction.username"), 	// ==> Username
-					config.get("evertec.transaction.password"), 	// ==> Password
-					request.getAccountId(), 						// ==> CustomerId
-					user.getAccounts()[0].getLastName() + " "
-						+ user.getAccounts()[0].getFirstName(),		// ==> CustmerName
-					user.getAccounts()[0].getAccountEmail(),		// ==> CustomerEmail
-					"9999999999",									// ==> Telephone
-					StringUtils.EMPTY, 								// ==> fax
-					address1 == null ? StringUtils.EMPTY : address1,// ==> Address1
-					address2, 										// ==> Address2
-					user.getAccounts()[0].getAddress().getState(),	// ==> State
-					request.getCity() == null ? StringUtils.EMPTY : request.getCity(),// ==> City
-					user.getAccounts()[0].getAddress().getZipCode(),// ==> ZipCode
-					request.getDescription() == null ? StringUtils.EMPTY : request.getDescription(),// ==> DescriptionBuy
-					"0",   											// ==> OperatorId
-					StringUtils.EMPTY, 								// ==> Tax1
-					StringUtils.EMPTY, 								// ==> Tax2
-					StringUtils.EMPTY, 								// ==> Tax3
-					StringUtils.EMPTY, 								// ==> Tax4
-					StringUtils.EMPTY, 								// ==> Channel
-					String.format("%s: %s %s", request.getSource(), paymentType, payment.getTransactionId()),	// ==> MerchantTransactionId
-					taxes.get("totalPayment").toString(), 			// ==> Amount
-					request.getCardType(), 							// ==> PaymentType
-					request.getCardCVV(), 							// ==> SecurityCardCode
-					request.getCardDueDate(),						// ==> ExpirationDate
-					request.getCardNumber(), 						// ==> CardNumber
-					StringUtils.EMPTY,								// ==> BankRoutingNumber
-					StringUtils.EMPTY, 								// ==> BankAccountNumber
-					StringUtils.EMPTY,		 						// ==> AuthorizationBit
-					StringUtils.EMPTY,								// ==> BankClientName
-					request.getServiceCode() == null ? StringUtils.EMPTY : request.getServiceCode(),// ==> Filler1 (ServiceCode)
-					String.valueOf(user.getId()), 					// ==> Filler2 (user.id)
-					request.getAccountId(),							// ==> Filler3
-					request.getServiceNumber() == null ? StringUtils.EMPTY : request.getServiceNumber(),// ==> Filler4
-					StringUtils.EMPTY);											// ==> Note
-		* */
 		((PaymentsProxyImpl) paymentsProxy).setEndPointWS(merchantEndPoint);
 		SendTransactionsResponseSendTransactionsResult responseH2H = paymentsProxy.processCreditCardH2H(merchantUser, merchantPassword, jsonRequest.getAccountNumber(),
-				jsonRequest.getNameOnCard(), "", "", "", jsonRequest.getStreet(), "",
-				"PR", "", jsonRequest.getZip(), "", "0", "", "", "", "", "",
+				jsonRequest.getNameOnCard(), "noreplay@claropr.com", "", "", jsonRequest.getStreet(), "",
+				"", "", jsonRequest.getZip(), "PREPAGO", "", "", "0000.00", "0000.00", "", "",
 				jsonRequest.getAplicationID(), jsonRequest.getAmount(), accountType, jsonRequest.getCvNum(), jsonRequest.getExpDate(), jsonRequest.getCardNum(),
 				"", "","", "", "", jsonRequest.getAccountNumber(), jsonRequest.getAccountNumber(),
 				jsonRequest.getAccountNumber(), ""
@@ -454,11 +416,15 @@ public class CreditCardResourceH2H {
 
 		EvertecResponse responseH2HConverted = convertToObject(responseH2H.get_any()[1]);
 
-		ResponseCreditCardProcess response = paymentsProxy.processCreditCard(merchantUser, merchantPassword, merchantEndPoint, jsonRequest.getCardNum(),
-				jsonRequest.getExpDate(), jsonRequest.getNameOnCard(), jsonRequest.getAmount(), jsonRequest.getZip(),
-				jsonRequest.getStreet(), jsonRequest.getCvNum(), extData);
+		ResponseCreditCardProcess response = new ResponseCreditCardProcess();
+		response.setResponseCode(responseH2HConverted.getStatusCode());
+		response.setMessage(responseH2HConverted.getStatusDescription());
+		response.setAuthCode(responseH2HConverted.getAuthorizationNumber());
+//		ResponseCreditCardProcess response = paymentsProxy.processCreditCard(merchantUser, merchantPassword, merchantEndPoint, jsonRequest.getCardNum(),
+//				jsonRequest.getExpDate(), jsonRequest.getNameOnCard(), jsonRequest.getAmount(), jsonRequest.getZip(),
+//				jsonRequest.getStreet(), jsonRequest.getCvNum(), extData);
 
-		response.setResponseCode(response.getResponseCode());
+//		response.setResponseCode(response.getResponseCode());
 		response.setHasError(response.getResponseCode().equals("0") ? "false" : "true");
 
 		return response;
