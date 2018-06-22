@@ -11,7 +11,6 @@ import com.gateway.payments.dao.AuthorizationApplicationDAO;
 import com.gateway.payments.dao.PaymentTransactionDAO;
 import com.gateway.payments.domain.ProcessCreditCardRequest;
 import com.gateway.payments.domain.ResponseCreditCardProcess;
-import com.gateway.payments.properties.AppProperties;
 import com.gateway.payments.proxy.PaymentsProxy;
 import com.gateway.payments.proxy.PaymentsProxyImpl;
 import com.gateway.payments.util.*;
@@ -67,6 +66,9 @@ public class CreditCardResourceH2H {
 	private ErrorProperties errorProperties;
 
 	@Autowired
+	private ApplicationProperties appProperties;
+
+	@Autowired
 	@Qualifier("configurationSoapMsg")
 	private Properties soapMsg;
 
@@ -97,16 +99,16 @@ public class CreditCardResourceH2H {
 
 			// get merchant list
 			//merchant = merchantBO.getDefaultMerchantByApplicationId(jsonRequestEncrypt.getAplicationID());
-			MerchantType merchantType = new MerchantType(AppProperties.getString("merchant.type.credit.h2h.id"));
-			merchantType.setName(AppProperties.getString("merchant.type.credit.h2h.name"));
-			merchantType.setEnabled(AppProperties.getString("merchant.type.credit.h2h.enabled"));
+			MerchantType merchantType = new MerchantType(appProperties.getAppCod().get("merchantTypeH2hCreditId"));
+			merchantType.setName(appProperties.getAppCod().get("merchantTypeH2hCreditName"));
+			merchantType.setEnabled(appProperties.getAppCod().get("merchantTypeH2hCreditEnabled"));
 
-			merchant.setMerchantId(AppProperties.getString("merchant.credit.h2h.id"));
-			merchant.setUserName(AppProperties.getString("merchant.credit.h2h.username"));
-			merchant.setPassword(AppProperties.getString("merchant.credit.h2h.password"));
-			merchant.setUrl(AppProperties.getString("merchant.credit.h2h.endPoint"));
-			merchant.setName(AppProperties.getString("merchant.credit.h2h.name"));
-			merchant.setMerchantTypeId(AppProperties.getString("merchant.credit.h2h.typeid"));
+			merchant.setMerchantId(appProperties.getAppCod().get("merchantH2hCreditId"));
+			merchant.setUserName(appProperties.getAppCod().get("merchantH2hCreditUsername"));
+			merchant.setPassword(appProperties.getAppCod().get("merchantH2hCreditPassword"));
+			merchant.setUrl(appProperties.getAppCod().get("merchantH2hCreditEndpoint"));
+			merchant.setName(appProperties.getAppCod().get("merchantH2hCreditName"));
+			merchant.setMerchantTypeId(appProperties.getAppCod().get("merchantH2hCreditTypeId"));
 			merchant.setMerchantType(merchantType);
 
 			if (app == null) {
@@ -493,4 +495,6 @@ public class CreditCardResourceH2H {
 		return jsonRequestDecrypt;
 
 	}
+
+
 }

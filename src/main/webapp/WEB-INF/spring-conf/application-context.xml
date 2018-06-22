@@ -19,7 +19,8 @@
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Service" />
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Component" />
     </context:component-scan>
-    <util:properties id="configurationError" location="classpath:error.properties"></util:properties>
-    <util:properties id="configurationSoapMsg" location="classpath:soapMsg.properties"></util:properties>
+    <util:properties id="configurationError" location="classpath:error.properties"/>
+    <util:properties id="configurationSoapMsg" location="classpath:soapMsg.properties"/>
+    <util:properties id="configurationApp" location="classpath:app.properties"/>
 </beans>
 
