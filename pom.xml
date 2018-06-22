@@ -131,10 +131,8 @@
 							<sourceRoot>${project.build.directory}/generated-sources/cxf</sourceRoot>
 							<wsdlOptions>
 								<wsdlOption>
-									<!--<wsdl>${project.basedir}/src/main/resources/com/e4gslab/claro/payments/gateway/wsdl/Transacta.ASMX.wsdl</wsdl>-->
-									<wsdl>${project.basedir}/src/main/resources/com/e4gslab/claro/payments/gateway/wsdl/Serviceh2h.ASMX.wsdl</wsdl>
-									<!--<wsdlLocation>classpath:com/e4gslab/claro/payments/gateway/wsdl/Transacta.ASMX.wsdl</wsdlLocation>-->
-									<wsdlLocation>classpath:com/e4gslab/claro/payments/gateway/wsdl/Serviceh2h.ASMX.wsdl</wsdlLocation>
+									<wsdl>${project.basedir}/src/main/resources/com/e4gslab/claro/payments/gateway/wsdl/Transacta.ASMX.wsdl</wsdl>
+									<wsdlLocation>classpath:com/e4gslab/claro/payments/gateway/wsdl/Transacta.ASMX.wsdl</wsdlLocation>
 								</wsdlOption>
 							</wsdlOptions>
 						</configuration>

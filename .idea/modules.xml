@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/../../claro-payment-gateway-model/claro-payment-gateway-model.iml" filepath="$PROJECT_DIR$/../../claro-payment-gateway-model/claro-payment-gateway-model.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../claro-payment-gateway-model/claro-payment-gateway-model.iml" filepath="$PROJECT_DIR$/../claro-payment-gateway-model/claro-payment-gateway-model.iml" />
+      <module fileurl="file://C:/claro-payment-gateway-model/claro-payment-gateway-model.iml" filepath="C:/claro-payment-gateway-model/claro-payment-gateway-model.iml" />
       <module fileurl="file://$PROJECT_DIR$/claro-payment-gateway-service.iml" filepath="$PROJECT_DIR$/claro-payment-gateway-service.iml" />
     </modules>
   </component>
