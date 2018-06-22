@@ -15,7 +15,10 @@ import com.gateway.payments.proxy.PaymentsProxy;
 import com.gateway.payments.proxy.PaymentsProxyImpl;
 import com.gateway.payments.util.*;
 import com.gateway.payments.util.InternalError;
+import com.gateway.payments.ws.serviceh2h.EvertecResponse;
 import com.google.gson.Gson;
+import org.apache.axis.message.MessageElement;
+import org.apache.commons.lang.StringUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +40,8 @@ import java.math.BigInteger;
 import java.security.GeneralSecurityException;
 import java.security.InvalidAlgorithmParameterException;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Properties;
 
 /**
@@ -447,6 +452,8 @@ public class CreditCardResourceH2H {
 				jsonRequest.getAccountNumber(), ""
 				);
 
+		EvertecResponse responseH2HConverted = convertToObject(responseH2H.get_any()[1]);
+
 		ResponseCreditCardProcess response = paymentsProxy.processCreditCard(merchantUser, merchantPassword, merchantEndPoint, jsonRequest.getCardNum(),
 				jsonRequest.getExpDate(), jsonRequest.getNameOnCard(), jsonRequest.getAmount(), jsonRequest.getZip(),
 				jsonRequest.getStreet(), jsonRequest.getCvNum(), extData);
@@ -496,5 +503,40 @@ public class CreditCardResourceH2H {
 
 	}
 
+	public EvertecResponse convertToObject(MessageElement message) throws Exception {
 
+		EvertecResponse response = new EvertecResponse();
+
+		try{
+			Iterator items = message.getChildElements();
+			while(items.hasNext()){
+				MessageElement m = (MessageElement) items.next();
+				Iterator items2 = m.getChildElements();
+				while(items2.hasNext()){
+					MessageElement m2 = (MessageElement) items2.next();
+					List list = m2.getChildren();
+					for (Object object : list) {
+						MessageElement o = (MessageElement) object;
+						if(StringUtils.contains(o.getNodeName(), "StatusCode")){
+							response.setStatusCode(o.getValue());
+						}else if(StringUtils.contains(o.getNodeName(), "StatusDescription")){
+							response.setStatusDescription(o.getValue());
+						}else if(StringUtils.contains(o.getNodeName(), "ConfirmationNumber")){
+							response.setConfirmationNumber(o.getValue());
+						}else if(StringUtils.contains(o.getNodeName(), "AuthorizationNumber")){
+							response.setAuthorizationNumber(o.getValue());
+						}
+					}
+				}
+			}
+
+		}catch(Exception ex){
+			logger.error("Error parseando el mensaje de Evertec TDC", ex);
+//			TODO QUITAR throw new PaymentTransactionException("000", "error.payment.evertec.parser.mensaje", null);
+		}
+
+		logger.info("TDC Evertec response: {}", response);
+
+		return response;
+	}
 }
