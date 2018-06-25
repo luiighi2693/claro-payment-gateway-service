@@ -9,6 +9,7 @@ import com.e4gslab.ebill.payment.gateway.model.*;
 import com.gateway.payments.dao.AplicationDAO;
 import com.gateway.payments.dao.AuthorizationApplicationDAO;
 import com.gateway.payments.dao.PaymentTransactionDAO;
+import com.gateway.payments.domain.ProcessCreditCardH2HRequest;
 import com.gateway.payments.domain.ProcessCreditCardRequest;
 import com.gateway.payments.domain.ResponseCreditCardProcess;
 import com.gateway.payments.proxy.PaymentsProxy;
@@ -87,12 +88,14 @@ public class CreditCardResourceH2H {
 	@Path("process")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response process(ProcessCreditCardRequest jsonRequestEncrypt, @Context HttpServletRequest request, @QueryParam("accountType") String accountType)
+	public Response process(ProcessCreditCardH2HRequest jsonRequestEncrypt, @Context HttpServletRequest request)
 			throws JSONException {
 
 		logger.info("Inicio del metodo processCreditCard");
 		logger.info("IP que hace la llamada: " + request.getRemoteHost());
 		logger.info("Puerto de la llamada: " + request.getRemotePort());
+
+		logger.info("request " + jsonRequestEncrypt);
 
 		Aplication app = null;
 		Merchant merchant = new Merchant();
@@ -140,7 +143,7 @@ public class CreditCardResourceH2H {
 				return Response.status(409).entity(generalError.generateJSON().toString()).build();
 			}
 
-			ProcessCreditCardRequest jsonRequest = jsonRequestEncrypt;
+			ProcessCreditCardH2HRequest jsonRequest = jsonRequestEncrypt;
 
 			/*try {
 
@@ -167,6 +170,7 @@ public class CreditCardResourceH2H {
 			try {
 				payment = createPaymentTransaction(jsonRequest, app, request.getRemoteHost(),
 						BigInteger.valueOf(request.getRemotePort()));
+				logger.info("payment " + payment.toString());
 
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -181,7 +185,8 @@ public class CreditCardResourceH2H {
 			ResponseCreditCardProcess response;
 
 			try {
-				response = makePaymentSoap(merchant.getUserName(), merchant.getPassword(), merchant.getUrl(), jsonRequest, accountType);
+				response = makePaymentSoap(merchant.getUserName(), merchant.getPassword(), merchant.getUrl(), merchant.getMerchantId(),jsonRequest);
+				logger.info("responseSoap " + response.toString());
 			} catch (Exception e) {
 				e.printStackTrace();
 
@@ -239,11 +244,11 @@ public class CreditCardResourceH2H {
 		}
 	}
 
-	public Response evaluateRequest(ProcessCreditCardRequest jsonRequest) throws Exception {
+	public Response evaluateRequest(ProcessCreditCardH2HRequest jsonRequest) throws Exception {
 		logger.info("Evaluando el request de la peticion");
 
-		if (jsonRequest.getNameOnCard().length() > 100) {
-			logger.error("Nombre en la tarjeta es mayor a 100: " + jsonRequest.getNameOnCard());
+		if (jsonRequest.getCustomerName().length() > 100) {
+			logger.error("Nombre en la tarjeta es mayor a 100: " + jsonRequest.getCustomerName());
 
 			GeneralError generalError = new GeneralError();
 			generalError.setCodError(errorProperties.getErrorCod().get("codError5"));
@@ -343,7 +348,7 @@ public class CreditCardResourceH2H {
 		}
 	}
 
-	public PaymentTransaction createPaymentTransaction(ProcessCreditCardRequest jsonRequest, Aplication app, String Ip,
+	public PaymentTransaction createPaymentTransaction(ProcessCreditCardH2HRequest jsonRequest, Aplication app, String Ip,
 													   BigInteger puerto) {
 
 		logger.info("Generando ID de la Transaccion");
@@ -356,31 +361,31 @@ public class CreditCardResourceH2H {
 		payment.setCardNum(org.apache.commons.lang.StringUtils.leftPad(jsonRequest.getCardNum()
 						.substring(jsonRequest.getCardNum().length() - 4, jsonRequest.getCardNum().length()),
 				jsonRequest.getCardNum().length(), '*'));
-		payment.setNameOnCard(jsonRequest.getNameOnCard());
+		payment.setNameOnCard(jsonRequest.getCustomerName());
 		payment.setStreet(jsonRequest.getStreet());
-		payment.setZip(jsonRequest.getZip());
+		payment.setZip(jsonRequest.getZipCode());
 		payment.setIp(Ip);
 		payment.setPuerto(puerto);
 		payment.setCreateDate(new Date());
 		payment.setPCRFTransaID(jsonRequest.getPcrftransaID());
-		payment.setBan(jsonRequest.getAccountNumber());
+		payment.setBan(jsonRequest.getCustomerId());
 		payment.setStatus("C");// CREATED creado
 
 		paymentDAO.save(payment);
 		return payment;
 	}
 
-	public ResponseCreditCardProcess makePaymentSoap(String merchantUser, String merchantPassword, String merchantEndPoint, ProcessCreditCardRequest jsonRequest, String accountType) throws Exception {
+	public ResponseCreditCardProcess makePaymentSoap(String merchantUser, String merchantPassword, String merchantEndPoint, String merchantTransId, ProcessCreditCardH2HRequest jsonRequest) throws Exception {
 
 		PaymentsProxy paymentsProxy = new PaymentsProxyImpl();
 		StringBuilder exDateNew = new StringBuilder();
 
-		String customerId = jsonRequest.getAccountNumber();
+		/*String customerId = jsonRequest.getAccountNumber();
 		String city = "";
 		String state = "";
-		String country = "";
+		String country = "";*/
 
-		String extData = "<RegisterNum></RegisterNum>" +
+		/*String extData = "<RegisterNum></RegisterNum>" +
 				"<Tax1>0000.00</Tax1>" +
 				"<Tax2>0000.00</Tax2>" +
 				"<CustomerEmail>noreplay@claropr.com</CustomerEmail>" +
@@ -395,23 +400,23 @@ public class CreditCardResourceH2H {
 				"<Zip>" + jsonRequest.getZip() + "</Zip>" +
 				"<Country>" + country + "</Country>" +
 				"</Address>" +
-				"</BillTo>";
+				"</BillTo>";*/
 
-		if (accountType != null && accountType.equals("PREPAGO")) {
+		/*if (accountType != null && accountType.equals("PREPAGO")) {
 			extData = extData + "<Description>PREPAGO</Description>";
-		}
+		}*/
 
-		logger.info("******************************");
-		logger.info(extData);
+		/*logger.info("******************************");
+		logger.info(extData);*/
 		logger.info("******************************");
 
 		((PaymentsProxyImpl) paymentsProxy).setEndPointWS(merchantEndPoint);
-		SendTransactionsResponseSendTransactionsResult responseH2H = paymentsProxy.processCreditCardH2H(merchantUser, merchantPassword, jsonRequest.getAccountNumber(),
-				jsonRequest.getNameOnCard(), "noreplay@claropr.com", "", "", jsonRequest.getStreet(), "",
-				"", "", jsonRequest.getZip(), "PREPAGO", "", "", "0000.00", "0000.00", "", "",
-				jsonRequest.getAplicationID(), jsonRequest.getAmount(), accountType, jsonRequest.getCvNum(), jsonRequest.getExpDate(), jsonRequest.getCardNum(),
-				"", "","", "", "", jsonRequest.getAccountNumber(), jsonRequest.getAccountNumber(),
-				jsonRequest.getAccountNumber(), ""
+		SendTransactionsResponseSendTransactionsResult responseH2H = paymentsProxy.processCreditCardH2H(merchantUser, merchantPassword, jsonRequest.getCustomerId(),
+				jsonRequest.getCustomerName(), jsonRequest.getCustomerEmail(), jsonRequest.getTelephone(), "", jsonRequest.getAddress1(), jsonRequest.getAddress2(),
+				jsonRequest.getState(), jsonRequest.getCity(), jsonRequest.getZipCode(), jsonRequest.getDescriptionBuy(), "", "", "", "", "", "",
+				merchantTransId, jsonRequest.getAmount(), jsonRequest.getPaymentType(), jsonRequest.getCvNum(), jsonRequest.getExpDate(), jsonRequest.getCardNum(),
+				"", "","", "", "", "", "",
+				"", ""
 				);
 
 		EvertecResponse responseH2HConverted = convertToObject(responseH2H.get_any()[1]);

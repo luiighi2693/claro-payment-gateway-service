@@ -16,6 +16,72 @@ Cache-Control: no-cache
 "accountNumber": "4356787543"
 }
 
+<> 2018-06-25T120003.200.json
+
+###
+
+POST http://localhost:9595/payment/creditcardh2h/process?accountType=1
+Accept: */*
+Content-Type: application/json
+Cache-Control: no-cache
+
+{
+"cardNum": "4548400000000631",
+"expDate": "1219",
+"nameOnCard": "Claro Puerto Rico Checkout",
+"amount": "0.01",
+"zip": "00612",
+"street": "test",
+"cvNum": "781",
+"aplicationID": "Dt01rFi02XUrIktH2345",
+"pcrftransaID": "42M0Jr57474977516C5d",
+"accountNumber": "4356787543"
+}
+
+<> 2018-06-22T012207.200.json
+
+###
+
+POST http://localhost:9595/payment/creditcardh2h/process?accountType=1
+Accept: */*
+Content-Type: application/json
+Cache-Control: no-cache
+
+{
+"cardNum": "4548400000000631",
+"expDate": "1219",
+"nameOnCard": "Claro Puerto Rico Checkout",
+"amount": "0.01",
+"zip": "00612",
+"street": "test",
+"cvNum": "781",
+"aplicationID": "Dt01rFi02XUrIktH2345",
+"pcrftransaID": "42M0Jr57474977516C5d",
+"accountNumber": "4356787543"
+}
+
+<> 2018-06-22T012033.200.json
+
+###
+
+POST http://localhost:9595/payment/creditcardh2h/process?accountType=1
+Accept: */*
+Content-Type: application/json
+Cache-Control: no-cache
+
+{
+"cardNum": "4548400000000631",
+"expDate": "1219",
+"nameOnCard": "Claro Puerto Rico Checkout",
+"amount": "0.01",
+"zip": "00612",
+"street": "test",
+"cvNum": "781",
+"aplicationID": "Dt01rFi02XUrIktH2345",
+"pcrftransaID": "42M0Jr57474977516C5d",
+"accountNumber": "4356787543"
+}
+
 <> 2018-06-22T125119.409.json
 
 ###

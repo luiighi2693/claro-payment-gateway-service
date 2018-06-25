@@ -22,6 +22,8 @@ public class ApplicationProperties {
 	private String merchantH2hCreditPassword;
 	@Value("#{configurationApp['merchant.credit.h2h.id']}")
 	private String merchantH2hCreditId;
+	@Value("#{configurationApp['merchant.credit.h2h.transaction.id']}")
+	private String merchantH2hCreditTransactionId;
 	@Value("#{configurationApp['merchant.credit.h2h.name']}")
 	private String merchantH2hCreditName;
 	@Value("#{configurationApp['merchant.credit.h2h.createddate']}")
@@ -61,6 +63,7 @@ public class ApplicationProperties {
 		appCod.put("merchantH2hCreditUsername", merchantH2hCreditUsername);
 		appCod.put("merchantH2hCreditPassword", merchantH2hCreditPassword);
 		appCod.put("merchantH2hCreditId", merchantH2hCreditId);
+		appCod.put("merchantH2hCreditTransactionId", merchantH2hCreditTransactionId);
 		appCod.put("merchantH2hCreditName", merchantH2hCreditName);
 		appCod.put("merchantH2hCreditCreatedDate", merchantH2hCreditCreatedDate);
 		appCod.put("merchantH2hCreditUpdatedDate", merchantH2hCreditUpdatedDate);
