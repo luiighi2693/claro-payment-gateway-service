@@ -111,7 +111,7 @@ public class CreditCardResourceH2H {
 			merchantType.setName(appProperties.getAppCod().get("merchantTypeH2hCreditName"));
 			merchantType.setEnabled(appProperties.getAppCod().get("merchantTypeH2hCreditEnabled"));
 
-			merchant.setMerchantId(appProperties.getAppCod().get("merchantH2hCreditId"));
+			merchant.setMerchantId(appProperties.getAppCod().get("merchantH2hCreditTransactionId"));
 			merchant.setUserName(appProperties.getAppCod().get("merchantH2hCreditUsername"));
 			merchant.setPassword(appProperties.getAppCod().get("merchantH2hCreditPassword"));
 			merchant.setUrl(appProperties.getAppCod().get("merchantH2hCreditEndpoint"));
@@ -170,7 +170,6 @@ public class CreditCardResourceH2H {
 			try {
 				payment = createPaymentTransaction(jsonRequest, app, request.getRemoteHost(),
 						BigInteger.valueOf(request.getRemotePort()));
-				logger.info("payment " + payment.toString());
 
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -186,7 +185,6 @@ public class CreditCardResourceH2H {
 
 			try {
 				response = makePaymentSoap(merchant.getUserName(), merchant.getPassword(), merchant.getUrl(), merchant.getMerchantId(),jsonRequest);
-				logger.info("responseSoap " + response.toString());
 			} catch (Exception e) {
 				e.printStackTrace();
 
@@ -430,7 +428,7 @@ public class CreditCardResourceH2H {
 //				jsonRequest.getStreet(), jsonRequest.getCvNum(), extData);
 
 //		response.setResponseCode(response.getResponseCode());
-		response.setHasError(response.getResponseCode().equals("0") ? "false" : "true");
+		response.setHasError(response.getResponseCode().equals("0000") ? "false" : "true");
 
 		return response;
 	}
